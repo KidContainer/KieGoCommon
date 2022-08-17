@@ -37,6 +37,10 @@ func TestSet(t *testing.T) {
 
 	mm := NewSetWithCapacity[string](1)
 	assert.Equal(t, mm.Size(), 0, "size equal to 0")
+
+	mmm := NewSetWithCapacity[bool](-1)
+	assert.Equal(t, mmm.Size(), 0, "size equal to 0")
+
 }
 
 func TestSyncSet(t *testing.T) {
