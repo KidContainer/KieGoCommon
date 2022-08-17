@@ -21,6 +21,22 @@ func TestSet(t *testing.T) {
 
 	m.Reserve(1000)
 	assert.Equal(t, m.Size(), 0, "size equals to 0")
+	m.Add(1)
+	m.Add(2)
+	m.Reserve(1)
+	assert.Equal(t, m.Size(), 2, "size equals to 2")
+	m.Reserve(3)
+	assert.Equal(t, m.Size(), 2, "size equals to 2")
+
+
+	count := 0
+	for range m.Range(){
+		count++
+	}
+	assert.Equal(t, count, 2, "size equals to 2")
+
+	mm := NewSetWithCapacity[string](1)
+	assert.Equal(t, mm.Size(), 0, "size equal to 0")
 }
 
 func TestSyncSet(t *testing.T) {
@@ -31,4 +47,5 @@ func TestSyncSet(t *testing.T) {
 	m.Remove(1)
 	assert.Equal(t, m.Contain(1), false, "doesn't contain 1")
 	assert.Equal(t, m.Contain(2), false, "doesn't contain 2")
+
 }
